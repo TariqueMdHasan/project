@@ -6,6 +6,7 @@ function WeatherNow() {
   const [city, setCity] = useState("");
   const [error, setError] = useState("");
   const [enter, setEnter] = useState(false);
+  const [loading, setLoading] = useState(false)
 
   const getWeatherData = async () => {
     if (!city) {
@@ -13,6 +14,7 @@ function WeatherNow() {
       return;
     }
     try {
+      setLoading(true)
       setEnter(false);
       setError("");
 
@@ -60,12 +62,14 @@ function WeatherNow() {
         timezone: weatherFetch.data.timezone,
       });
       console.log(weatherFetch.data);
+
     } catch (error) {
       console.log(error);
       setError("Something went wrong");
     }finally{
         setError('')
         setEnter(false)
+        setLoading(false)
     }
   };
 
@@ -107,6 +111,7 @@ function WeatherNow() {
       </div>
 
       <div className="flex-1 w-full overflow-y-auto relative flex flex-col items-center gap-2 ">
+        {loading && (<p className="text-white mt-4">Loading...</p>)}
         {weatherData && (
           <div className="bg-white shadow-lg rounded-2xl p-6 w-full max-w-md lg:w-8/12 text-gray-800">
             <h2 className="text-2xl font-bold mb-4">
