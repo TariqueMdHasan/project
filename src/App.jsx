@@ -14,8 +14,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Landing/>} />
         <Route path="/Bookfinder" element={<Bookfinder/>} />
-        {/* <Route path="/Earthquake-Visualizer" element={<EarthquakeVis/>} />
-        <Route path="/Recipe-Idea" element={<RecipeIdea/>} /> */}
+        <Route path="/Earthquake-Visualizer" element={<EarthquakeVis/>} />
+        <Route path="/Recipe-Idea" element={<RecipeIdea/>} />
         <Route path="/Weather-now" element={<WeatherNow/>} />
       </Routes>
     </Router>
